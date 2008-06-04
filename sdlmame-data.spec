@@ -2,7 +2,7 @@
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -71,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jun 04 2008 Thorsten Leemhuis <belegdol[at]gmail[dot]com> - 0125-2
+- rebuild
+
 * Sat May 10 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0125-1
 - Updated mameinfo.dat to 0.125
 - Updated history.dat to 0.125
