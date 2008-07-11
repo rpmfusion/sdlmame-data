@@ -1,14 +1,14 @@
-%define vernumber 125
+%define vernumber 126
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
 License:        Distibutable
 URL:            http://mamedev.org
-Source0:        http://cheat.retrogames.com/cheat117.zip
+Source0:        http://cheat.retrogames.com/cheat123.zip
 Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.zip
 Source2:        http://www.mameworld.net/mameinfo/update/Mameinfo%{version}.zip
 Source3:        sdlmame-ctrlr.tgz
@@ -71,6 +71,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jul 11 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0126-1
+- Updated mameinfo.dat to 0.126
+- Updated history.dat to 0.126
+- Updated catver.ini to 0.126
+- Updated cheat.dat to 0.123
+
 * Wed Jun 04 2008 Thorsten Leemhuis <belegdol[at]gmail[dot]com> - 0125-2
 - rebuild
 
