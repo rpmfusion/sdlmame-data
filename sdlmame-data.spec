@@ -1,14 +1,13 @@
-%define vernumber 126
+%define vernumber 127
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
 License:        Distibutable
 URL:            http://mamedev.org
-Source0:        http://cheat.retrogames.com/cheat123.zip
 Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.zip
 Source2:        http://www.mameworld.net/mameinfo/update/Mameinfo%{version}.zip
 Source3:        sdlmame-ctrlr.tgz
@@ -27,7 +26,6 @@ Requires:       sdlmame >= %{version}
 %setup -qcT
 
 # extract DAT files
-unzip -qa %{SOURCE0} -d .
 unzip -qa %{SOURCE1} -d .
 7za x %{SOURCE2}
 7za x Mameinfo%{version}.exe
@@ -37,7 +35,7 @@ unzip -qa %{SOURCE4} -d .
 # fix permissions and line endings
 chmod 0644 mameinfo/*.txt
 chmod 0755 mameinfo
-sed -i 's/\r//' cheat.txt mameinfo/*
+sed -i 's/\r//' mameinfo/*
 
 #fix encoding
 for i in mameinfo/*.txt
@@ -53,7 +51,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 cheat.dat history.dat mameinfo.dat catveren/Catver.ini\
+install -pm 644 history.dat mameinfo.dat catveren/Catver.ini\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 tar --extract --directory $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr \
@@ -66,11 +64,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc cheat.txt mameinfo
+%doc mameinfo
 %{_datadir}/mame
 
 
 %changelog
+* Wed Aug 20 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0127-1
+- Updated mameinfo.dat to 0.127
+- Updated history.dat to 0.127
+- Updated catver.ini to 0.127
+- Dropped cheat.dat until there is a replacement database
+
 * Wed Jul 30 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 0126-2
 - rebuild for buildsys cflags issue
 
