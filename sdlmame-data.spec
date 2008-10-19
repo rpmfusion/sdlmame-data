@@ -1,4 +1,4 @@
-%define vernumber 127
+%define vernumber 128
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -10,13 +10,15 @@ License:        Distibutable
 URL:            http://mamedev.org
 Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.zip
 Source2:        http://www.mameworld.net/mameinfo/update/Mameinfo%{version}.zip
-Source3:        sdlmame-ctrlr.tgz
+Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 
 BuildRequires:  p7zip
+BuildRequires:  unrar
+
 Requires:       sdlmame >= %{version}
 
 %description
@@ -38,7 +40,7 @@ chmod 0755 mameinfo
 sed -i 's/\r//' mameinfo/*
 
 #fix encoding
-for i in mameinfo/*.txt
+for i in mameinfo/*.txt leggimi.txt
 do
 /usr/bin/iconv -f iso8859-1 -t utf-8 $i > $i.conv && /bin/mv -f $i.conv $i;
 done 
@@ -51,11 +53,10 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 history.dat mameinfo.dat catveren/Catver.ini\
+install -pm 644 history.dat mameinfo.dat Catver.ini\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
-tar --extract --directory $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr \
-    --file %{SOURCE3}
+unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
 
 
 %clean
@@ -64,11 +65,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc mameinfo
+%doc leggimi.txt mameinfo readme.txt
 %{_datadir}/mame
 
 
 %changelog
+* Sun Oct 19 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0128-1
+- Updated mameinfo.dat to 0.128
+- Updated history.dat to 0.128
+- Updated catver.ini to 0.128
+- Switched to the ctrlr files from http://www.kutek.net/mame32_config_files.php
+
 * Wed Aug 20 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0127-1
 - Updated mameinfo.dat to 0.127
 - Updated history.dat to 0.127
