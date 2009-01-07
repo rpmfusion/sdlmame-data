@@ -1,4 +1,4 @@
-%define vernumber 128
+%define vernumber 129
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -70,6 +70,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan  7 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0129-1
+- Updated mameinfo.dat to 0.129
+- Updated history.dat to 0.129
+- Updated catver.ini to 0.129
+
 * Sun Oct 19 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0128-1
 - Updated mameinfo.dat to 0.128
 - Updated history.dat to 0.128
