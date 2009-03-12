@@ -74,9 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu Mar 12 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0130-1
-- Updated mameinfo.dat to 0.129 and updated the Source2 URL (.net → .info)
-- Updated history.dat to 0.129
-- Updated catver.ini to 0.129
+- Updated mameinfo.dat to 0.130 and updated the Source2 URL (.net → .info)
+- Updated history.dat to 0.130
+- Updated catver.ini to 0.130
 - Added nplayers.ini
 
 * Wed Jan  7 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0129-1
