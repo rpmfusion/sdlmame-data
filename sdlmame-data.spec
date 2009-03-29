@@ -2,7 +2,7 @@
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -73,6 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0130-2
+- rebuild for new F11 features
+
 * Thu Mar 12 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0130-1
 - Updated mameinfo.dat to 0.130 and updated the Source2 URL (.net → .info)
 - Updated history.dat to 0.130
