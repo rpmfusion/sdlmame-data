@@ -2,7 +2,7 @@
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -13,6 +13,7 @@ Source2:        http://www.mameworld.info/mameinfo/update/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
+Source6:        http://http://cheat.retrogames.com/download/cheat%{vernumber}u2.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -36,6 +37,7 @@ mv docs mameinfo
 unzip -qa %{SOURCE4} -d .
 unzip -qa %{SOURCE5} -d .
 mv docs nplayers
+7za x %{SOURCE6}
 
 # fix permissions and line endings
 chmod 0644 mameinfo/*.txt
@@ -56,7 +58,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 history.dat mameinfo.dat catveren/Catver.ini nplayers.ini\
+install -pm 644 history.dat mameinfo.dat catveren/Catver.ini nplayers.ini cheat.zip\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
@@ -68,11 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc nplayers/nplayers.txt mameinfo
+%doc nplayers/nplayers.txt mameinfo cheat.txt
 %{_datadir}/mame
 
 
 %changelog
+* Fri Apr 03 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0130-3
+- Added cheats back, now in the form of the xml files
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0130-2
 - rebuild for new F11 features
 
