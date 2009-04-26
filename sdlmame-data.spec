@@ -1,8 +1,8 @@
-%define vernumber 130
+%define vernumber 131
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -13,7 +13,7 @@ Source2:        http://www.mameworld.info/mameinfo/update/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://http://cheat.retrogames.com/download/cheat%{vernumber}u2.7z
+Source6:        http://http://cheat.retrogames.com/download/cheat130u2.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -75,6 +75,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Apr 26 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0131-1
+- Updated mameinfo.dat to 0.131
+- Updated history.dat to 0.131
+- Updated catver.ini to 0.131
+- Updated nplayers.ini to 0.131
+
 * Fri Apr 03 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0130-3
 - Added cheats back, now in the form of the xml files
 
