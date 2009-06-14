@@ -1,8 +1,8 @@
-%define vernumber 131
+%define vernumber 132
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -58,7 +58,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 history.dat mameinfo.dat catveren/Catver.ini nplayers.ini cheat.zip\
+install -pm 644 history.dat mameinfo.dat Catver.ini nplayers.ini cheat.zip\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jun 14 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0132-1
+- Updated to 0.132
+
 * Thu Apr 30 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0131-2
 - Updated cheats to 0.131
 
