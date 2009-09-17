@@ -1,4 +1,4 @@
-%define vernumber 133
+%define vernumber 134
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -8,12 +8,12 @@ Summary:        Data files for the SDLMAME package
 Group:          Amusements/Games
 License:        Distibutable
 URL:            http://mamedev.org
-Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.zip
+Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.7z
 Source2:        http://www.mameworld.info/mameinfo/update/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://http://cheat.retrogames.com/download/cheat0132.7z
+Source6:        http://http://cheat.retrogames.com/download/cheat%{version}.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -30,7 +30,7 @@ Requires:       sdlmame >= %{version}
 %setup -qcT
 
 # extract DAT files
-unzip -qa %{SOURCE1} -d .
+7za x %{SOURCE1}
 7za x %{SOURCE2}
 7za x Mameinfo%{version}.exe
 mv docs mameinfo
@@ -58,7 +58,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 history.dat mameinfo.dat Catver.ini nplayers.ini cheat.zip\
+install -pm 644 history.dat mameinfo.dat catveren/Catver.ini nplayers.ini cheat.zip\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
@@ -70,11 +70,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc nplayers/nplayers.txt mameinfo cheat.txt
+%doc catveren/readme.txt nplayers/nplayers.txt mameinfo cheat.txt readhist.txt
 %{_datadir}/mame
 
 
 %changelog
+* Thu Sep 17 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0134-1
+- Updated to 0.134
+- Switched to 7z sources for history.dat
+
 * Mon Aug 03 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0133-1
 - Updated everything except cheats to 0.133
 
