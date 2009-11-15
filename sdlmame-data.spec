@@ -1,4 +1,4 @@
-%define vernumber 134
+%define vernumber 135
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -13,7 +13,7 @@ Source2:        http://www.mameworld.info/mameinfo/update/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://http://cheat.retrogames.com/download/cheat%{version}.7z
+Source6:        http://http://cheat.retrogames.com/download/cheat0134.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -42,10 +42,10 @@ mv docs nplayers
 # fix permissions and line endings
 chmod 0644 mameinfo/*.txt
 chmod 0755 mameinfo
-sed -i 's/\r//' mameinfo/* nplayers/nplayers.txt
+sed -i 's/\r//' cheat.txt readhist.txt mameinfo/* nplayers/nplayers.txt 
 
 #fix encoding
-for i in mameinfo/*.txt
+for i in readhist.txt mameinfo/*.txt
 do
 /usr/bin/iconv -f iso8859-1 -t utf-8 $i > $i.conv && /bin/mv -f $i.conv $i;
 done 
@@ -58,7 +58,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/mame
-install -pm 644 history.dat mameinfo.dat catveren/Catver.ini nplayers.ini cheat.zip\
+install -pm 644 history.dat mameinfo.dat Catver.ini nplayers.ini cheat.zip\
     $RPM_BUILD_ROOT%{_datadir}/mame
 install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
@@ -70,11 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc catveren/readme.txt nplayers/nplayers.txt mameinfo cheat.txt readhist.txt
+%doc nplayers/nplayers.txt mameinfo cheat.txt readhist.txt
 %{_datadir}/mame
 
 
 %changelog
+* Sun Nov 15 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0135-1
+- Updated everything except cheats to 0.135
+
 * Thu Sep 17 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0134-1
 - Updated to 0.134
 - Switched to 7z sources for history.dat
