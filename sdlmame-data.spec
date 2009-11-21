@@ -21,6 +21,10 @@ BuildArch:      noarch
 BuildRequires:  p7zip
 BuildRequires:  unrar
 
+%if 0%{?fedora} >= 12
+BuildRequires:  chkconfig
+%endif
+
 Requires:       sdlmame >= %{version}
 
 %description
@@ -75,8 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sun Nov 15 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0135-1
+* Sat Nov 21 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0135-1
 - Updated everything except cheats to 0.135
+- Worked around RPM Fusion bug #956
 
 * Thu Sep 17 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0134-1
 - Updated to 0.134
