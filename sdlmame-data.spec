@@ -2,7 +2,7 @@
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
