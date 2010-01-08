@@ -1,4 +1,4 @@
-%define vernumber 135
+%define vernumber 136
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -13,7 +13,7 @@ Source2:        http://www.mameworld.info/mameinfo/update/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://http://cheat.retrogames.com/download/cheat0134.7z
+Source6:        http://http://cheat.retrogames.com/download/cheat%{version}.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -75,8 +75,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sun Nov 15 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0135-1
+* Fri Jan 08 2010 Julian Sikorski <belegdol[at]gmail[dot]com> - 0136-1
+- Updated to 0.136
+- Dropped the workaround, it was not helping anyway
+
+* Sat Nov 21 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0135-1
 - Updated everything except cheats to 0.135
+- Worked around RPM Fusion bug #956
 
 * Thu Sep 17 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0134-1
 - Updated to 0.134
