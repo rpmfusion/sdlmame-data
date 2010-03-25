@@ -1,4 +1,4 @@
-%define vernumber 136
+%define vernumber 137
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 25 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0137-1
+- Updated to 0.137
+
 * Fri Jan 08 2010 Julian Sikorski <belegdol[at]gmail[dot]com> - 0136-1
 - Updated to 0.136
 - Dropped the workaround, it was not helping anyway
