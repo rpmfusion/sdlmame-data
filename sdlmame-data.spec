@@ -1,4 +1,4 @@
-%define vernumber 138
+%define vernumber 139
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -13,7 +13,7 @@ Source2:        http://www.mameworld.info/mameinfo/download/Mameinfo%{version}.z
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://cheat.retrogames.com/download/cheat0137.7z
+Source6:        http://cheat.retrogames.com/download/cheat%{version}.7z
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -42,13 +42,13 @@ mv docs nplayers
 # fix permissions and line endings
 chmod 0644 mameinfo/*.txt
 chmod 0755 mameinfo
-sed -i 's/\r//' cheat.txt readhist.txt mameinfo/* nplayers/nplayers.txt 
+sed -i 's/\r//' cheat.txt readhist.txt readme.txt mameinfo/* nplayers/nplayers.txt 
 
 #fix encoding
 for i in readhist.txt mameinfo/*.txt
 do
 /usr/bin/iconv -f iso8859-1 -t utf-8 $i > $i.conv && /bin/mv -f $i.conv $i;
-done 
+done
 
 
 %build
@@ -70,11 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc nplayers/nplayers.txt mameinfo cheat.txt readhist.txt
+%doc nplayers/nplayers.txt mameinfo cheat.txt readhist.txt readme.txt
 %{_datadir}/mame
 
 
 %changelog
+* Wed Aug 04 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0139-1
+- Updated to 0.139
+
 * Sat May 29 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0138-1
 - Updated to 0.138 (except cheats)
 - Fixed Source2 and Source6 Source URLs
