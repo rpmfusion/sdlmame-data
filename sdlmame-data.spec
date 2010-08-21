@@ -2,7 +2,7 @@
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Aug 21 2010 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0139-2
+- rebuilt
+
 * Wed Aug 04 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0139-1
 - Updated to 0.139
 
