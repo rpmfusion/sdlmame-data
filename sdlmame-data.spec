@@ -1,8 +1,8 @@
-%define vernumber 139
+%define vernumber 140
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
 Group:          Amusements/Games
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Oct 24 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0140-1
+- Updated to 0.140
+
 * Sat Aug 21 2010 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0139-2
 - rebuilt
 
