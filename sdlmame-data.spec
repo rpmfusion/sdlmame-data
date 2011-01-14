@@ -1,4 +1,4 @@
-%define vernumber 140
+%define vernumber 141
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -9,7 +9,7 @@ Group:          Amusements/Games
 License:        Distibutable
 URL:            http://mamedev.org
 Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.7z
-Source2:        http://www.mameworld.info/mameinfo/download/Mameinfo%{version}.zip
+Source2:        http://www.mameworld.info/mameinfo/download/Mameinfo%{version}a.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
@@ -32,7 +32,7 @@ Requires:       sdlmame >= %{version}
 # extract DAT files
 7za x %{SOURCE1}
 7za x %{SOURCE2}
-7za x Mameinfo%{version}.exe
+7za x Mameinfo%{version}a.exe
 mv docs mameinfo
 unzip -qa %{SOURCE4} -d .
 unzip -qa %{SOURCE5} -d .
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jan 13 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0141-1
+- Updated to 0.141
+
 * Sun Oct 24 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0140-1
 - Updated to 0.140
 
