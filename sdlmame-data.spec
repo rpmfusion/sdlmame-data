@@ -1,11 +1,10 @@
-%define vernumber 142
+%define vernumber 144
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
 Release:        1%{?dist}
 Summary:        Data files for the SDLMAME package
 
-Group:          Amusements/Games
 License:        Distibutable
 URL:            http://mamedev.org
 Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.7z
@@ -14,7 +13,6 @@ Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
 Source6:        http://cheat.retrogames.com/download/cheat%{version}.7z
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 
@@ -32,7 +30,7 @@ Requires:       sdlmame >= %{version}
 # extract DAT files
 7za x %{SOURCE1}
 7za x %{SOURCE2}
-7za x Mameinfo%{version}.exe
+7za x Mameinfo%{version}.7z
 mv docs mameinfo
 unzip -qa %{SOURCE4} -d .
 unzip -qa %{SOURCE5} -d .
@@ -63,17 +61,17 @@ install -d $RPM_BUILD_ROOT%{_datadir}/mame/ctrlr
 unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %files
-%defattr(-,root,root,-)
 %doc nplayers/nplayers.txt mameinfo cheat.txt readhist.txt readme.txt
 %{_datadir}/mame
 
 
 %changelog
+* Thu Dec 22 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0144-1
+- Updated everything except catver.ini to 0.144
+- Updated catver.ini to at 0.143u4
+- Dropped obsolete Group, Buildroot, %%clean and %%defattr
+
 * Thu May 12 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0142-1
 - Updated to 0.142
 
