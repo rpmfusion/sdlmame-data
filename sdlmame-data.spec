@@ -1,4 +1,4 @@
-%define vernumber 144
+%define vernumber 145
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -32,7 +32,7 @@ Requires:       sdlmame >= %{version}
 7za x %{SOURCE2}
 7za x Mameinfo%{version}.7z
 mv docs mameinfo
-unzip -qa %{SOURCE4} -d .
+unzip -qaj %{SOURCE4} -d .
 unzip -qa %{SOURCE5} -d .
 mv docs nplayers
 7za x %{SOURCE6}
@@ -46,6 +46,9 @@ for i in readhist.txt mameinfo/*.txt
 do
 /usr/bin/iconv -f iso8859-1 -t utf-8 $i > $i.conv && /bin/mv -f $i.conv $i;
 done
+
+#fix end-of-line encoding
+sed -i 's/\r//' nplayers/nplayers.txt
 
 
 %build
@@ -67,9 +70,14 @@ unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
 
 
 %changelog
+* Tue Feb 21 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0145-1
+- Updated to 0.145
+- Junk paths when unzipping catveren.zip
+- Fix nplayers.txt end-of-line encoding
+
 * Thu Dec 22 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0144-1
 - Updated everything except catver.ini to 0.144
-- Updated catver.ini to at 0.143u4
+- Updated catver.ini to 0.143u4
 - Dropped obsolete Group, Buildroot, %%clean and %%defattr
 
 * Thu May 12 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0142-1
