@@ -1,4 +1,4 @@
-%define vernumber 145
+%define vernumber 146
 
 Name:           sdlmame-data
 Version:        0%{vernumber}
@@ -12,7 +12,7 @@ Source2:        http://www.mameworld.info/mameinfo/download/Mameinfo%{version}.z
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
 Source5:        http://nplayers.arcadebelgium.be/files/nplayers%{version}.zip
-Source6:        http://cheat.retrogames.com/download/cheat%{version}.7z
+Source6:        http://cheat.retrogames.com/download/cheat0145.7z
 
 BuildArch:      noarch
 
@@ -39,10 +39,10 @@ mv docs nplayers
 
 # fix permissions and line endings
 chmod 0755 mameinfo
-sed -i 's/\r//' cheat.txt readhist.txt readme.txt mameinfo/*
+sed -i 's/\r//' cheat.txt readme.txt mameinfo/*
 
 #fix encoding
-for i in readhist.txt mameinfo/*.txt
+for i in mameinfo/*.txt
 do
 /usr/bin/iconv -f iso8859-1 -t utf-8 $i > $i.conv && /bin/mv -f $i.conv $i;
 done
@@ -65,11 +65,15 @@ unrar x %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/mame
 
 
 %files
-%doc nplayers/nplayers.txt mameinfo cheat.txt readhist.txt readme.txt
+%doc nplayers/nplayers.txt mameinfo cheat.txt readme.txt
 %{_datadir}/mame
 
 
 %changelog
+* Mon Jul 02 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0146-1
+- Updated everything except cheats to 0.146
+- readhist.txt does not exist in this release
+
 * Tue Feb 21 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0145-1
 - Updated to 0.145
 - Junk paths when unzipping catveren.zip
