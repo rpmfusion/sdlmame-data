@@ -7,7 +7,7 @@ Summary:        Data files for the SDLMAME package
 
 License:        Distibutable
 URL:            http://mamedev.org
-Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}.7z
+Source1:        http://www.arcade-history.com/dats/mamehistory%{vernumber}a.7z
 Source2:        http://www.mameworld.info/mameinfo/download/Mameinfo%{version}.zip
 Source3:        http://www.kutek.net/mame_roms_pinball/mame32_config_files/ctrlr.rar
 Source4:        http://www.progettoemma.net/public/cat/catveren.zip
